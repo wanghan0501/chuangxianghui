@@ -4,3 +4,6 @@
 out
 gen
 *.scss
+
+# Pycharm cache files
+**/__pycache__/
