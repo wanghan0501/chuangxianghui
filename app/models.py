@@ -8,3 +8,16 @@ Copyright © 2017 Wang Han. SCU. All right Reserved.
 """
 
 from app import db
+
+
+class Comment(db.Model):
+    __tablename__ = 'comment'
+
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(256), nullable=False)
+
+    def __init__(self, text):
+        self.text = text
+
+    def __repr__(self):
+        return "<Comment {}>".format(self.id)

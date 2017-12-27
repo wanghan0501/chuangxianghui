@@ -18,6 +18,8 @@ class Config(object):
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/shuzhifenxiang.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class ProductionConfig(Config):
@@ -30,3 +32,7 @@ config = {
     'default': DevelopmentConfig,
 }
 
+manager = {
+    'manager_name': 'shuzhifenxiang',
+    'password': '123456'
+}
