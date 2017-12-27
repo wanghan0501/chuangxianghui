@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
     {% for comment in comments %}
-        <li>comment.text</li>
+        <li>{{ comment.text }}</li>
     {% endfor %}
 {% endblock %}

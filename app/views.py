@@ -9,8 +9,9 @@ Copyright © 2017 Wang Han. SCU. All right Reserved.
 
 from flask import render_template, flash, redirect, request, url_for, g, session, jsonify
 
-from app import app
+from app import app, comment_helper
 from config import manager
+import random
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -20,7 +21,13 @@ def index():
 
 @app.route('/comment', methods=["GET", "POST"])
 def comment():
-    return render_template('comment.html')
+    # get total comment number
+    count = comment_helper.get_comment_count()
+    # random comment offset
+    random_comment_offset = random.randint(0, count - 1)
+    # get comment
+    comment = comment_helper.get_comment_by_offset(random_comment_offset)
+    return render_template('comment.html', text=comment.text)
 
 
 @app.route('/manage', methods=["GET", "POST"])
@@ -32,7 +39,8 @@ def manage():
         elif request.form['password'] != manager['password']:
             error = 'Invalid Password'
         else:
-            return render_template('index.html', error=error)
+            comments = comment_helper.get_all_comments()
+            return render_template('manage.html', comments=comments)
     return render_template('login.html', error=error)
 
 

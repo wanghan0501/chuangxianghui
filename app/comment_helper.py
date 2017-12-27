@@ -31,3 +31,18 @@ def update_comment(comment_id, new_text):
     comment = select_comment(comment_id)
     comment.text = new_text
     db.session.commit()
+
+
+# get total number of comment
+def get_comment_count():
+    return Comment.query.count()
+
+
+def get_all_comments():
+    comments = Comment.query.all()
+    return comments
+
+
+# get comment by offset from 0 to count(*)-1
+def get_comment_by_offset(offset):
+    return Comment.query.offset(offset).first()
