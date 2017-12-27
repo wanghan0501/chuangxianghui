@@ -1,10 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>创享会</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../public/css/bootstrap.min.css" rel="stylesheet">
+        <!-–[if IE]>
+            <script>
+            (function(){if(e = “abbr,article,aside,audio,canvas,datalist,details,dialog, eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,
+            output,progress,section,time,video”.split(’,'),i=e.length;while(i–){document.createElement_x(e[i])}})()
+            </script>
+        <![endif]–>
+		<link href="../public/css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">创享汇</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">测试页面</a></li>
+          </ul>
+        </div>
+      </div>
+</nav>
 
-</body>
+<div class="container-fluid">
+
+      <div class="row row-offcanvas row-offcanvas-left">
+
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+
+            <ul class="nav nav-sidebar">
+              <li class="active"><a href="#">管理评论</a></li>
+              <li><a href="#" target="_ext">搜索评论</a></li>
+            </ul>
+
+        </div><!--/span-->
+
+        <div class="col-sm-9 col-md-9 main">
+
+          <!--toggle sidebar button-->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+          </p>
+
+		  <h1 class="page-header">
+            管理评论
+          </h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <h4>评论数</h4>
+              <span class="text-muted">0</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <h4>访问数</h4>
+              <span class="text-muted">0</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder text-center">
+              <h4>访问数</h4>
+              <span class="text-muted">0</span>
+            </div>
+          </div>
+          <hr>
+
+          <div class="placeholders">
+            <form>
+              <div class="form-group">
+                <label for="addComment">添加评论</label>
+                <textarea type="text" class="form-control" id="addComment" placeholder="输入评论"></textarea>
+              </div>
+              <button type="submit" class="btn btn-default">确认添加</button>
+            </form>
+          </div>
+
+          <h2 class="sub-header">评论栏目</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>评论内容</th>
+                  <th>管理评论</th>
+                </tr>
+              </thead>
+              <tbody id="comTable">
+                <tr>
+                  <td>1</td>
+                  <td>N-C公式构造最简单，但高阶不稳定，常用低阶而低阶精度低不能保证达到要求。复化梯形公式和 Simpson公式，精度较高，计算简单，使用非常广泛。
+                  </td>
+                  <td><span>
+                      <button class="btn btn-primary">修改评论</button>
+                      <button class="btn btn-danger">删除评论</button>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Romberg求积方法，算法简单，当节点加密提高积分近似程度时，前面的计算结果可以为后面的计算使用，这对减少计算量很有好处。并有比较简单的误差估计方法。
+                  </td>
+                  <td>
+                    <span>
+                      <button class="btn btn-primary">修改评论</button>
+                      <button class="btn btn-danger">删除评论</button>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Gauss型求积，其节点不规则，所以当节点增加时，前面计算的函数值不能被后面利用。计算过程比较麻烦，但精度高，特别是对无穷区间上的积分和广义积分的计算，是其他方法所不能比的
+                  </td>
+                  <td><span>
+                      <button class="btn btn-primary">修改评论</button>
+                      <button class="btn btn-danger">删除评论</button>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">5</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+      </div><!--/row-->
+	</div>
+</div><!--/.container-->
+
+<footer>
+  <p class="pull-right">©2017 </p>
+</footer>
+
+	<!-- script references -->
+		<script src="../js/jquery.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/scripts.js"></script>
+
+        <script>
+
+        </script>
+	</body>
 </html>
