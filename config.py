@@ -13,7 +13,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    key = ''
+    pass
 
 
 class DevelopmentConfig(Config):
