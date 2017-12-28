@@ -14,11 +14,6 @@ from config import manager
 import random
 
 
-# 暴力强行判断是否登陆，只要有一个用户登陆了，所有人都可以访问
-# 只要logout，所有人都不能访问
-flag = 0
-
-
 @app.route('/comment', methods=["GET", "POST"])
 def comment():
     # get total comment number
@@ -40,19 +35,18 @@ def login():
         elif request.form['password'] != manager['password']:
             error = 'Invalid Password'
         else:
-            flag = 1
-            return redirect(manage)
+            return redirect(url_for('manage'))
     return render_template('login.html', error=error)
 
 
 @app.route('/manage', methods=["GET", "POST"])
-def manage():
-    if flag == 1:
-        comments = comment_helper.get_all_comments()
-        count = {'visit': 0, 'com_len': len(comments)}
-        return render_template('manage.html', comments=comments, count=count)
-    else:
-        return redirect(login)
+@app.route('/manage<int:page>', methods=["GET", "POST"])
+def manage(page=1):
+    comments = comment_helper.get_all_comments()
+    length = len(comments)
+    p_list, start, end = comment_helper.get_page(length, pagesize=5, page=page)
+    count = {'visit': 0, 'com_len': length, 'page_list': p_list}
+    return render_template('manage.html', comments=comments[start:end], count=count)
 
 
 @app.route('/add_comment', methods=["GET", "POST"])
@@ -62,8 +56,7 @@ def add_comment():
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
-    flag = 0
-    return
+    return redirect(url_for('login'))
 
 
 @app.errorhandler(404)

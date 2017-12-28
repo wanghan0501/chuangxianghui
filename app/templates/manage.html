@@ -13,7 +13,7 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">测试页面</a></li>
+                <li><a href="/comment">测试页面</a></li>
               </ul>
             </div>
           </div>
@@ -71,6 +71,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>id</th>
                       <th>评论内容</th>
                       <th>管理评论</th>
                     </tr>
@@ -78,7 +79,8 @@
                   <tbody id="comTable">
                   {% for comment in comments %}
                     <tr>
-                      <td>{{ loop.index }}</td>
+                      <td class="text-muted">{{ loop.index }}</td>
+                      <td class="text-primary">{{ comment.id }}</td>
                       <td>{{ comment.text }}</td>
                       <td><span><button class="btn btn-danger">删除评论</button> </span></td>
                     </tr>
@@ -88,20 +90,11 @@
               </div>
               <nav aria-label="Page navigation">
                 <ul class="pagination">
-                  <li>
-                    <a href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">...</a></li>
-                    <li><a href="#">5</a></li>
-                  <li>
-                    <a href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
+                  <!--<li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>-->
+                  {% for page in count.page_list %}
+                    <li><a href="manage{{ page }}">{{page}}</a></li>
+                  {% endfor %}
+                  <!--<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>-->
                 </ul>
               </nav>
           </div><!--/row-->

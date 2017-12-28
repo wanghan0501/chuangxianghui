@@ -46,3 +46,45 @@ def get_all_comments():
 # get comment by offset from 0 to count(*)-1
 def get_comment_by_offset(offset):
     return Comment.query.offset(offset).first()
+
+
+# get pagination
+def get_page(length, page, pagesize=5):
+    p_len = int(length / pagesize)
+    p_list = range(1, p_len+1)
+    start = 0
+    end = pagesize
+    if page and page > 1:
+        start = (page-1) * pagesize
+        end = page * pagesize
+        if start > length:
+            start = length - pagesize
+            end = length
+        elif end > length:
+            end = length
+    return p_list, start, end
+
+# def get_page(total,p):
+#     show_page = 5   # show page
+#     pageoffset = 2  # offset
+#     start = 1    # start
+#     end = total  # end
+#
+#     if total > show_page:
+#         if p > pageoffset:
+#             start = p - pageoffset
+#             if total > p + pageoffset:
+#                 end = p + pageoffset
+#             else:
+#                 end = total
+#         else:
+#             start = 1
+#             if total > show_page:
+#                 end = show_page
+#             else:
+#                 end = total
+#         if p + pageoffset > total:
+#             start -= (p + pageoffset - end)
+#     # loop
+#     dic = range(start, end + 1)
+#     return dic
