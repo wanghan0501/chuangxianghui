@@ -18,13 +18,14 @@ class Config(object):
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/shuzhifenxiang.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/shuzhifenxiang_development.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class ProductionConfig(Config):
     DEBUG = False
-
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/shuzhifenxiang_production.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 config = {
     'development': DevelopmentConfig,
