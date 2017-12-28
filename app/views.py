@@ -14,9 +14,9 @@ from config import manager
 import random
 
 
-@app.route('/', methods=["GET", "POST"])
-def index():
-    return render_template('index.html')
+# @app.route('/', methods=["GET", "POST"])
+# def index():
+#     return render_template('index.html')
 
 
 @app.route('/comment', methods=["GET", "POST"])
@@ -29,9 +29,9 @@ def comment():
     comment = comment_helper.get_comment_by_offset(random_comment_offset)
     return render_template('comment.html', text=comment.text)
 
-
-@app.route('/manage', methods=["GET", "POST"])
-def manage():
+@app.route('/', methods=["GET", "POST"])
+@app.route('/login', methods=["GET", "POST"])
+def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != manager['manager_name']:
@@ -39,10 +39,15 @@ def manage():
         elif request.form['password'] != manager['password']:
             error = 'Invalid Password'
         else:
-            comments = comment_helper.get_all_comments()
-            count = {'visit': 0, 'com_len': 0}
-            return render_template('manage.html', comments=comments, count=count)
+            return redirect(manage)
     return render_template('login.html', error=error)
+
+
+@app.route('/manage', methods=["GET", "POST"])
+def manage():
+    comments = comment_helper.get_all_comments()
+    count = {'visit': 0, 'com_len': len(comments)}
+    return render_template('manage.html', comments=comments, count=count)
 
 
 @app.route('/addcomment', methods=["GET", "POST"])
