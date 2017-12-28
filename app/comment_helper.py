@@ -63,28 +63,3 @@ def get_page(length, page, pagesize=5):
         elif end > length:
             end = length
     return p_list, start, end
-
-# def get_page(total,p):
-#     show_page = 5   # show page
-#     pageoffset = 2  # offset
-#     start = 1    # start
-#     end = total  # end
-#
-#     if total > show_page:
-#         if p > pageoffset:
-#             start = p - pageoffset
-#             if total > p + pageoffset:
-#                 end = p + pageoffset
-#             else:
-#                 end = total
-#         else:
-#             start = 1
-#             if total > show_page:
-#                 end = show_page
-#             else:
-#                 end = total
-#         if p + pageoffset > total:
-#             start -= (p + pageoffset - end)
-#     # loop
-#     dic = range(start, end + 1)
-#     return dic

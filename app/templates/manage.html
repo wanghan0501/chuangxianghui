@@ -100,31 +100,33 @@
           </div><!--/row-->
         </div>
     </div><!--/.container-->
-
-    <footer>
-      <p class="pull-right">©2017 </p>
-    </footer>
-
 	<!-- script references -->
 		<script src="static/js/jquery.js"></script>
 		<script src="static/js/bootstrap.min.js"></script>
 		<script src="static/js/scripts.js"></script>
         <script>
-        comments = "123";
-        var addComment = function(){
-            $.ajax({
-              cache: true,
-              type: 'GET',
-              url:'/addcomment',
-              data: {'comments':comments}
-              async: false,
-              error: function(request) {
-                alert("失败!");},
-              success: function(data) {
-                alert("成功!");
-              }
-            });
-        }
 
+        var addComment = function(){
+            var addCommentDom = $('#addComment')
+            if ( addCommentDom.val() == "" ){
+              alert("评论栏为空，请填写评论再提交。");
+            }else{
+              comment = addCommentDom.val();
+              console.log("Start commit...");
+              $.ajax({
+                cache: true,
+                type: 'GET',
+                url:'/add_comment',
+                data: {'comment':comment},
+                async: false,
+                error: function(request) {
+                  alert("失败!");},
+                success: function(data) {
+                  alert("成功!");
+                }
+              });
+            }
+
+        }
         </script>
 {% endblock %}

@@ -51,7 +51,9 @@ def manage(page=1):
 
 @app.route('/add_comment', methods=["GET", "POST"])
 def add_comment():
-    return
+    cm = request.args.get('comment')
+    comment_helper.add_comment(cm)
+    return jsonify(res=True)
 
 
 @app.route('/logout', methods=["GET", "POST"])
