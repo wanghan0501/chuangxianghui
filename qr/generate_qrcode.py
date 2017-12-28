@@ -6,8 +6,8 @@ E-mail address is hanwang.0501@gmail.com.
 Copyright © 2017 Wang Han. SCU. All Rights Reserved.
 """
 
-import Image
 import qrcode
+from PIL import Image
 
 ip_address = "http://112.74.50.182:5000/comment"
 qr = qrcode.QRCode(version=2,
@@ -19,13 +19,14 @@ qr.add_data(ip_address)
 qr.make(fit=True)
 img = qr.make_image()
 img = img.convert("RGBA")
-icon = Image.open("shuzhifenxiang_favicon.png")
 
+# center icon
+icon = Image.open("shuzhifenxiang_favicon.png")
 img_w, img_h = img.size
-factor = 4
+
+factor = 3.5
 size_w = int(img_w / factor)
 size_h = int(img_h / factor)
-
 icon_w, icon_h = icon.size
 if icon_w > size_w:
     icon_w = size_w
