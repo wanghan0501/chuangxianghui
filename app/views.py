@@ -56,6 +56,13 @@ def add_comment():
     return jsonify(res=True)
 
 
+@app.route('/del_comment', methods=["GET", "POST"])
+def del_comment():
+    id = request.args.get('id')
+    comment_helper.delete_comment(id)
+    return jsonify(res=True)
+
+
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
     return redirect(url_for('login'))

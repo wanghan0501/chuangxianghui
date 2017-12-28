@@ -8,6 +8,7 @@ Copyright © 2017 Wang Han. SCU. All right Reserved.
 """
 from app.models import Comment
 from app import db
+import math
 
 
 def add_comment(text):
@@ -50,7 +51,7 @@ def get_comment_by_offset(offset):
 
 # get pagination
 def get_page(length, page, pagesize=5):
-    p_len = int(length / pagesize)
+    p_len = int(math.ceil(length / pagesize))
     p_list = range(1, p_len+1)
     start = 0
     end = pagesize

@@ -82,7 +82,7 @@
                       <td class="text-muted">{{ loop.index }}</td>
                       <td class="text-primary">{{ comment.id }}</td>
                       <td>{{ comment.text }}</td>
-                      <td><span><button class="btn btn-danger">删除评论</button> </span></td>
+                      <td><span><button class="btn btn-danger" onclick="deleteComment({{comment.id}})">删除评论</button> </span></td>
                     </tr>
                   {% endfor %}
                   </tbody>
@@ -105,7 +105,25 @@
 		<script src="static/js/bootstrap.min.js"></script>
 		<script src="static/js/scripts.js"></script>
         <script>
-
+        var deleteComment =function(id){
+            var cf = confirm("确定要删除？");
+            if ( cf == true ){
+              console.log("Start delete...");
+              $.ajax({
+                cache: true,
+                type: 'GET',
+                url:'/del_comment',
+                data: {'id':id},
+                async: false,
+                error: function(request) {
+                  alert("失败!");},
+                success: function(data) {
+                  alert("成功!");
+                  $('#addComment').val("");
+                }
+              });
+            }
+        }
         var addComment = function(){
             var addCommentDom = $('#addComment')
             if ( addCommentDom.val() == "" ){
@@ -123,10 +141,10 @@
                   alert("失败!");},
                 success: function(data) {
                   alert("成功!");
+                  $('#addComment').val("");
                 }
               });
             }
-
-        }
+        };
         </script>
 {% endblock %}
