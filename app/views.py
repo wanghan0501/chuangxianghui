@@ -40,8 +40,15 @@ def manage():
             error = 'Invalid Password'
         else:
             comments = comment_helper.get_all_comments()
-            return render_template('manage.html', comments=comments)
+            count = {'visit': 0, 'com_len': 0}
+            return render_template('manage.html', comments=comments, count=count)
     return render_template('login.html', error=error)
+
+
+@app.route('/addcomment', methods=["GET", "POST"])
+def add_momment():
+    return 0;
+
 
 
 @app.errorhandler(404)
