@@ -22,11 +22,18 @@ def get_str_chinese_time():
         remainder = number // 10
         number = number % 10
         if number == 0 and remainder != 0:
-            res += chinese_time_dict[remainder.__str__()] + "十"
+            if remainder != 1:
+                res += chinese_time_dict[remainder.__str__()] + "十"
+            else:
+                res += "十"
         elif number != 0 and remainder == 0:
             res += chinese_time_dict[number.__str__()]
         elif number != 0 and remainder != 0:
-            res += chinese_time_dict[remainder.__str__()] + "十" + chinese_time_dict[number.__str__()]
+
+            if remainder != 1:
+                res += chinese_time_dict[remainder.__str__()] + "十" + chinese_time_dict[number.__str__()]
+            else:
+                res += "十" + chinese_time_dict[number.__str__()]
         return res
 
     str = ""
@@ -52,4 +59,4 @@ def get_str_chinese_time():
 
 
 if __name__ == "__main__":
-    get_str_chinese_time()
+    print(get_str_chinese_time())
