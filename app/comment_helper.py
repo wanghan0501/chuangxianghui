@@ -63,4 +63,8 @@ def get_page(length, page, pagesize=5):
             end = length
         elif end > length:
             end = length
+
+    if page == 0:
+        start = length - pagesize
+        end = length
     return p_list, start, end

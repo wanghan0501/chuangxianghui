@@ -26,7 +26,7 @@
              <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
 
                 <ul class="nav nav-sidebar">
-                  <li class="active"><a href="#">管理评论</a></li>
+                  <li class="active"><a href="/manage">管理评论</a></li>
                   <li><a href="/logout" target="_ext" class="text-danger">退出</a></li>
                 </ul>
 
@@ -42,29 +42,24 @@
               <h1 class="page-header">
                 管理评论
               </h1>
-
-              <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder text-center">
+                <div class="row">
+                     <div class="placeholders col-md-3">
+                <div class="placeholder text-center">
                   <h4>评论数</h4>
                   <span class="text-muted">{{ count.com_len }}</span>
                 </div>
-{#                <div class="col-xs-6 col-sm-3 placeholder text-center">#}
-{#                  <h4>访问数</h4>#}
-{#                  <span class="text-muted">{{ count.visit }}</span>#}
-{#                </div>#}
               </div>
-              <hr>
 
-              <div class="placeholders">
-
+              <div class="placeholders col-md-9">
                   <div class="form-group">
                     <label for="addComment">添加评论</label>
                     <textarea type="text" class="form-control" id="addComment" placeholder="输入评论"></textarea>
                   </div>
                   <button class="btn btn-default" onclick="addComment()">确认添加</button>
-
               </div>
+                </div>
 
+                <hr>
               <h2 class="sub-header">评论栏目</h2>
               <div class="table-responsive">
                 <table class="table table-striped">
@@ -120,6 +115,7 @@
                 success: function(data) {
                   alert("成功!");
                   $('#addComment').val("");
+                  location.reload();
                 }
               });
             }
@@ -142,6 +138,7 @@
                 success: function(data) {
                   alert("成功!");
                   $('#addComment').val("");
+                  window.location.href = "/manage0"
                 }
               });
             }

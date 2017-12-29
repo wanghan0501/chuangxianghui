@@ -44,7 +44,7 @@ def login():
 def manage(page=1):
     comments = comment_helper.get_all_comments()
     length = len(comments)
-    p_list, start, end = comment_helper.get_page(length, pagesize=5, page=page)
+    p_list, start, end = comment_helper.get_page(length, pagesize=20, page=page)
     count = {'visit': 0, 'com_len': length, 'page_list': p_list}
     return render_template('manage.html', comments=comments[start:end], count=count)
 
