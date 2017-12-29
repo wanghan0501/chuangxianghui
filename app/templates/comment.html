@@ -103,6 +103,8 @@
 </body>
 <script src="static/js/clipboard.js"></script>
 <script>
+
+
     // 搞不定了，直接暴力js吧
     screenHeight = window.screen.height;
     screenWidth = window.screen.width;
@@ -110,6 +112,18 @@
     bgImg = document.getElementById("bg_img");
     copyA = document.getElementById("copy_link");
     dateP = document.getElementById("date");
+
+
+    // ios or android
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+    //alert('是否是iOS：'+isiOS);
+    if(isiOS){
+        copyA.style.display = "none";
+    }
+
     window.onload = function(){
         w = 680;
         h = 720;
