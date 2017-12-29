@@ -19,14 +19,14 @@ def get_str_chinese_time():
             return str
         res = ""
         number = int(str)
-        remainder = number % 10
-        number = number // 10
+        remainder = number // 10
+        number = number % 10
         if number == 0 and remainder != 0:
             res += chinese_time_dict[remainder.__str__()] + "十"
         elif number != 0 and remainder == 0:
             res += chinese_time_dict[number.__str__()]
         elif number != 0 and remainder != 0:
-            res += chinese_time_dict[number.__str__()] + "十" + chinese_time_dict[remainder.__str__()]
+            res += chinese_time_dict[remainder.__str__()] + "十" + chinese_time_dict[number.__str__()]
         return res
 
     str = ""
