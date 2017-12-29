@@ -88,6 +88,9 @@
         writing-mode: tb-rl;
         position: absolute;
     }
+    #date{
+        font-size:small;
+    }
 </style>
 <body>
 <div class="bg">
@@ -103,7 +106,7 @@
     // 搞不定了，直接暴力js吧
     screenHeight = window.screen.height;
     screenWidth = window.screen.width;
-    alert("0"+screenHeight)
+
     bgImg = document.getElementById("bg_img");
     copyA = document.getElementById("copy_link");
     dateP = document.getElementById("date");
@@ -113,28 +116,30 @@
         aw = 164;
         ah = 195;
         if(screenHeight > screenWidth){
-            alert("手机界面")
-            alert("2:"+bgImg.offsetHeight)
             ibottom = (screenHeight - bgImg.offsetHeight)/2;
             copyA.style.bottom = ibottom +"px";
-
             scale = bgImg.width / w;
             current_a_h = ah * scale;
             copyA.children[0].style.height = current_a_h + "px";
 
             // date
             itop = (ibottom);
+            ileft = 15;
             scale_itop = Math.sqrt(screenHeight*screenWidth/w*h)/itop + 160
-            //if(screenWidth == 375 && screenHeight==607){scale_itop += 60;}
+            if(screenWidth == 320 && screenHeight==480){scale_itop -= 60;} //ip 4
+            if(screenWidth == 320 && screenHeight==438){scale_itop -= 60;} //ip 4s
+            if(screenWidth == 320 && screenHeight==460){scale_itop -= 60;} //ip se and ip5s
             if(screenWidth == 375 && screenHeight==812){scale_itop += 80;}
-            if(screenWidth == 414 && screenHeight==736){scale_itop += 10;}
-            if(screenWidth == 412 && screenHeight==732){scale_itop += 10;}
+            if(screenWidth == 414 && screenHeight==736){scale_itop += 10;ileft+=10;} // ip6+
+            if(screenWidth == 412 && screenHeight==732){scale_itop += 10;ileft+=10;} //nexus 5x
+            if(screenWidth == 600 && screenHeight==960){scale_itop += 35;ileft+=30;}
+            if(screenWidth == 768 && screenHeight==1024){scale_itop = 105;ileft+=50;}//ipad mini
+            if(screenWidth == 1024 && screenHeight==1366){scale_itop = 205;ileft+=150;}//ipad pro
             dateP.style.top = scale_itop+"px";
-            dateP.style.left = "15px";
+            dateP.style.left = ileft + "px";
         }else{
             ileft = (screenWidth - bgImg.width)/2
             copyA.style.left = ileft + "px"
-            alert("4:"+bgImg.height)
             scale = bgImg.height / h;
             current_a_w = aw * scale;
             copyA.children[0].style.width = current_a_w+"px";
