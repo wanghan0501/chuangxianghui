@@ -63,7 +63,7 @@
         height: fit-content;
         display: block;
     }
-    .bg p {
+    .bg p.center {
         width: auto;
         margin:auto;
         text-align: center;
@@ -71,7 +71,7 @@
         writing-mode: tb-rl;
         padding-top: 2.5em;
         padding-bottom: 2.5em;
-        font-size: small;
+        font-size: large;
     }
     .bg a img{
         position: absolute;
@@ -84,32 +84,48 @@
         left: 0;
         display:block
     }
+    .vertical {
+        writing-mode: tb-rl;
+        position: absolute;
+    }
 </style>
 <body>
 <div class="bg">
     <img id="bg_img" class="center" src="static/css/bg.jpg">
-    <p class="center"> {{ text }}</p>
+    <p id="comment" class="center"> {{ text }}</p>
     <a id="copy_link"><img src = "static/css/copy.png"></a>
+    <p id="date" class="vertical">{{ time }}</p>
 </div>
 
 </body>
-
+<script src="static/js/clipboard.js"></script>
 <script>
     // 搞不定了，直接暴力js吧
     bgImg = document.getElementById("bg_img");
     copyA = document.getElementById("copy_link");
+    dateP = document.getElementById("date");
     window.onload = function(){
         w = 680;
         h = 720;
         aw = 164;
         ah = 195;
         if(window.outerHeight > window.outerWidth){
-            bottom = (window.outerHeight - bgImg.offsetHeight)/2;
-            copyA.style.bottom = bottom +"px";
+            ibottom = (window.outerHeight - bgImg.offsetHeight)/2;
+            copyA.style.bottom = ibottom +"px";
 
             scale = bgImg.width / w;
             current_a_h = ah * scale;
             copyA.children[0].style.height = current_a_h + "px";
+
+            // date
+            itop = (ibottom);
+            scale_itop = Math.sqrt(window.outerHeight*window.outerWidth/w*h)/itop + 160
+
+            if(window.outerWidth == 375 && window.outerHeight==812){scale_itop += 80;}
+            if(window.outerWidth == 414 && window.outerHeight==736){scale_itop += 10;}
+            if(window.outerWidth == 412 && window.outerHeight==732){scale_itop += 10;}
+            dateP.style.top = scale_itop+"px";
+            dateP.style.left = "15px";
         }else{
             left = (window.outerWidth - bgImg.width)/2
             copyA.style.left = left + "px"
@@ -117,8 +133,25 @@
             scale = bgImg.height / h;
             current_a_w = aw * scale;
             copyA.children[0].style.width = current_a_w+"px";
-        }
 
+            // date
+            dateP.style.left = (left+40) +"px";
+            dateP.style.top = (40) +"px";
+        }
     };
+
+    // clip board
+    copy_Btn = copyA.children[0];
+    copy_Btn.addEventListener("click", function() {
+        text = document.getElementById("comment").innerText;
+        clipboard.copy(text).then(function(){
+           alert("复制成功！");
+        }, function(err){
+           //document.getElementById("plain-copy-result").textContent = err;
+           alert("复制失败")
+        });
+    });
+
+
 </script>
 </html>
