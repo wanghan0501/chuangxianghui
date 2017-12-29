@@ -101,6 +101,9 @@
 <script src="static/js/clipboard.js"></script>
 <script>
     // 搞不定了，直接暴力js吧
+    screenHeight = window.screen.height;
+    screenWidth = window.screen.width;
+    alert("0"+screenHeight)
     bgImg = document.getElementById("bg_img");
     copyA = document.getElementById("copy_link");
     dateP = document.getElementById("date");
@@ -109,12 +112,10 @@
         h = 720;
         aw = 164;
         ah = 195;
-        if(window.outerHeight > window.outerWidth){
+        if(screenHeight > screenWidth){
             alert("手机界面")
-            alert("1:"+window.outerHeight)
             alert("2:"+bgImg.offsetHeight)
-            alert("3:"+window.outerWidth)
-            ibottom = (window.outerHeight - bgImg.offsetHeight)/2;
+            ibottom = (screenHeight - bgImg.offsetHeight)/2;
             copyA.style.bottom = ibottom +"px";
 
             scale = bgImg.width / w;
@@ -123,15 +124,15 @@
 
             // date
             itop = (ibottom);
-            scale_itop = Math.sqrt(window.outerHeight*window.outerWidth/w*h)/itop + 160
-
-            if(window.outerWidth == 375 && window.outerHeight==812){scale_itop += 80;}
-            if(window.outerWidth == 414 && window.outerHeight==736){scale_itop += 10;}
-            if(window.outerWidth == 412 && window.outerHeight==732){scale_itop += 10;}
+            scale_itop = Math.sqrt(screenHeight*screenWidth/w*h)/itop + 160
+            //if(screenWidth == 375 && screenHeight==607){scale_itop += 60;}
+            if(screenWidth == 375 && screenHeight==812){scale_itop += 80;}
+            if(screenWidth == 414 && screenHeight==736){scale_itop += 10;}
+            if(screenWidth == 412 && screenHeight==732){scale_itop += 10;}
             dateP.style.top = scale_itop+"px";
             dateP.style.left = "15px";
         }else{
-            ileft = (window.outerWidth - bgImg.width)/2
+            ileft = (screenWidth - bgImg.width)/2
             copyA.style.left = ileft + "px"
             alert("4:"+bgImg.height)
             scale = bgImg.height / h;
