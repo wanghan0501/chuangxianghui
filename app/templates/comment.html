@@ -110,6 +110,10 @@
         aw = 164;
         ah = 195;
         if(window.outerHeight > window.outerWidth){
+            alert("手机界面")
+            alert("1:"+window.outerHeight)
+            alert("2:"+bgImg.offsetHeight)
+            alert("3:"+window.outerWidth)
             ibottom = (window.outerHeight - bgImg.offsetHeight)/2;
             copyA.style.bottom = ibottom +"px";
 
@@ -127,15 +131,15 @@
             dateP.style.top = scale_itop+"px";
             dateP.style.left = "15px";
         }else{
-            left = (window.outerWidth - bgImg.width)/2
-            copyA.style.left = left + "px"
-
+            ileft = (window.outerWidth - bgImg.width)/2
+            copyA.style.left = ileft + "px"
+            alert("4:"+bgImg.height)
             scale = bgImg.height / h;
             current_a_w = aw * scale;
             copyA.children[0].style.width = current_a_w+"px";
 
             // date
-            dateP.style.left = (left+40) +"px";
+            dateP.style.left = (ileft+40) +"px";
             dateP.style.top = (40) +"px";
         }
     };
