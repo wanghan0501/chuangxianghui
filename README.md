@@ -12,7 +12,7 @@
 ```
 docker build -t "wanghan0501/flask:chuangxianghui" .
 ```
-3. 运行
+3. 运行docker
 ```
 docker run -it -p 5000:5000 --name shuzhifenxiang wanghan0501/flask:chuangxianghui
 ```

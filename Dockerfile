@@ -14,6 +14,6 @@ RUN mkdir /shuzhifenxiang
 WORKDIR /shuzhifenxiang
 Add . /shuzhifenxiang
 
-EXPOSE 5000
+EXPOSE 80
 
 CMD python3 /shuzhifenxiang/manage.py
