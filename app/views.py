@@ -10,6 +10,7 @@ Copyright © 2017 Wang Han. SCU. All right Reserved.
 from flask import render_template, flash, redirect, request, url_for, g, session, jsonify
 
 from app import app, comment_helper
+from utils.get_time import get_str_chinese_time
 from config import manager
 import random
 
@@ -22,7 +23,7 @@ def comment():
     random_comment_offset = random.randint(0, count - 1)
     # get comment
     comment = comment_helper.get_comment_by_offset(random_comment_offset)
-    return render_template('comment.html', text=comment.text)
+    return render_template('comment.html', text=comment.text, time=get_str_chinese_time())
 
 
 @app.route('/', methods=["GET", "POST"])

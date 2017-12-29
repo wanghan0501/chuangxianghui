@@ -71,7 +71,7 @@
         writing-mode: tb-rl;
         padding-top: 2.5em;
         padding-bottom: 2.5em;
-        font-size: small;
+        font-size: large;
     }
     .bg a img{
         position: absolute;
@@ -94,7 +94,7 @@
     <img id="bg_img" class="center" src="static/css/bg.jpg">
     <p id="comment" class="center"> {{ text }}</p>
     <a id="copy_link"><img src = "static/css/copy.png"></a>
-    <p id="date" class="vertical">二零一七年十二月二十八日</p>
+    <p id="date" class="vertical">{{ time }}</p>
 </div>
 
 </body>
@@ -133,6 +133,10 @@
             scale = bgImg.height / h;
             current_a_w = aw * scale;
             copyA.children[0].style.width = current_a_w+"px";
+
+            // date
+            dateP.style.left = (left+40) +"px";
+            dateP.style.top = (40) +"px";
         }
     };
 
