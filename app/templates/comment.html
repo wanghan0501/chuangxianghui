@@ -24,6 +24,7 @@
     }
 
     @media only screen and (max-width: 767px){
+
         img.center, p.center{
             width:50%;
             position: absolute;
@@ -34,15 +35,16 @@
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
         }
-        .bg img {
+        .bg img.center {
             width: 100%;
             vertical-align:middle;
         }
     }
 
     @media only screen and (min-width: 768px){
-        .bg img {
-            height: 100%;
+        .bg img.center{
+            //height: 100%;
+            height: -webkit-fill-available;
             vertical-align:middle;
         }
         p.center{
@@ -56,6 +58,11 @@
             transform: translate(-50%, -50%);
         }
     }
+    bg{
+        width: fit-content;
+        height: fit-content;
+        display: block;
+    }
     .bg p {
         width: auto;
         margin:auto;
@@ -65,18 +72,52 @@
         padding-top: 2.5em;
         padding-bottom: 2.5em;
     }
-    .shuli{
-        width: 15px;
-        margin: 0 auto;
-        line-height: 24px;
-        font-size: 20px;
-        word-wrap: break-word;/*英文的时候需要加上这句，自动换行*/
+    .bg a img{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+     a{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display:block
     }
 </style>
 <body>
 <div class="bg">
-    <img class="center" src="static/css/bg.jpg">
+    <img id="bg_img" class="center" src="static/css/bg.jpg">
     <p class="center"> {{ text }}</p>
+    <a id="copy_link"><img src = "static/css/copy.png"></a>
 </div>
+
 </body>
+
+<script>
+    // 搞不定了，直接暴力js吧
+    bgImg = document.getElementById("bg_img");
+    copyA = document.getElementById("copy_link");
+    window.onload = function(){
+        w = 680;
+        h = 720;
+        aw = 164;
+        ah = 195;
+        if(window.outerHeight > window.outerWidth){
+            bottom = (window.outerHeight - bgImg.offsetHeight)/2;
+            copyA.style.bottom = bottom +"px";
+
+            scale = bgImg.width / w;
+            current_a_h = ah * scale;
+            copyA.children[0].style.height = current_a_h + "px";
+        }else{
+            left = (window.outerWidth - bgImg.width)/2
+            copyA.style.left = left + "px"
+
+            scale = bgImg.height / h;
+            current_a_w = aw * scale;
+            copyA.children[0].style.width = current_a_w+"px";
+        }
+
+    };
+</script>
 </html>
