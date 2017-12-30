@@ -9,4 +9,4 @@ Copyright © 2017 Wang Han. SCU. All right Reserved.
 
 from app import app
 
-app.run(debug=False, port=80, host='0.0.0.0')
+app.run(debug=False, port=5000, host='0.0.0.0', threaded=True)

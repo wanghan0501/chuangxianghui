@@ -14,5 +14,5 @@ docker build -t "wanghan0501/flask:chuangxianghui" .
 ```
 3. 运行docker
 ```
-docker run -it -p 80:80 --name shuzhifenxiang wanghan0501/flask:chuangxianghui
+docker run -it -p 80:5000 --name shuzhifenxiang wanghan0501/flask:chuangxianghui
 ```
