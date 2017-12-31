@@ -26,6 +26,6 @@ RUN echo "${TIME_ZONE}" >/etc/timezone \
 WORKDIR /shuzhifenxiang
 COPY . /
 
-EXPOSE 80
+EXPOSE 5000
 
 CMD python3 /shuzhifenxiang/manage.py
