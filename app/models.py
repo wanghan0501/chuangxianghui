@@ -22,3 +22,16 @@ class Comment(db.Model):
     def __repr__(self):
         return "<Comment {}>".format(self.id)
 
+
+class Visit(db.Model):
+    __tablename__ = 'visit'
+
+    visit_day = db.Column(db.CHAR, primary_key=True)
+    visit_count = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, visit_day, visit_count):
+        self.visit_day = visit_day
+        self.visit_count = visit_count
+
+    def __repr__(self):
+        return "<Visit {}>".format(self.visit_day)
