@@ -6,13 +6,13 @@ Created by Wang Han on 27/12/2017 15:28.
 E-mail address is hanwang.0501@gmail.com.
 Copyright © 2017 Wang Han. SCU. All right Reserved.
 """
-import time
-from flask import render_template, flash, redirect, request, url_for, g, session, jsonify
+import random
+
+from flask import jsonify, redirect, render_template, request, url_for
 
 from app import app, comment_helper
-from utils.get_time import get_str_chinese_time
+from app.utils.get_time import get_str_chinese_time
 from config import manager
-import random
 
 
 @app.route('/comment', methods=["GET", "POST"])

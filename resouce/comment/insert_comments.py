@@ -9,7 +9,11 @@ Copyright © 2017 Wang Han. SCU. All right Reserved.
 
 from app.comment_helper import add_comment
 
-with open('语言内容汇总.txt', 'r', encoding='utf-8') as file:
+
+"""
+Read comments from file and insert them into database.
+"""
+with open('./语言内容汇总.txt', 'r', encoding='utf-8') as file:
     line = file.readline().strip('\n')
     while line:
         add_comment(line)

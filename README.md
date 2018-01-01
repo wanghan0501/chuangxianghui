@@ -1,29 +1,53 @@
-# 孰知分享
+# shuzhifenxiang(孰知分享)
 
-创享汇扫码获取随机评论
+Scan QR code and get a random comment.
 
-1. 开发环境
-  - 编程语言：python3
-  - Web框架：flask
-  - 数据库： sqlite
-  
-2. 通过docker部署应用:
+## Environment 
+  - Language：Python3
+  - Web framework：Flask
+  - Database： Sqlite
 
+## Quick Use
+
+If you want to use this without docker, you can following below:
+
+```bash
+python3 manage.py
 ```
+### Change Port
+
+Default port is `5000`
+
+If you want to change the default port, please set the port which you want to the following statement.
+```python
+app.run(debug=False, port=5000, host='0.0.0.0', threaded=True)
+```
+
+## Development
+
+1. develop project by docker
+```bash
 docker build -t "wanghan0501/flask:chuangxianghui" .
 ```
-3. 运行docker
+2. run docker
 ```
 docker run -it -p 80:5000 --name shuzhifenxiang wanghan0501/flask:chuangxianghui
 ```
-
-4. 进入已经正在运行的docker
-- 终端同步输出，在这个终端中如果```Control+C```则相当于关闭此docker
+3. control docker with running
+   
+   - Go into the existing docker.
+   
+   ```Control+C``` will kill the docker.    
     ```
     docker attach chuangxianghui
     ```
+   -  Start a new terminal.
     
-- 开启一个新的终端,在这个终端中```Control+C```不会关闭此docker
+   ```Control+C``` will not kill the docker. 
     ```
     docker exec -it shuzhifenxiang /bin/bash
-    ```    
+    ```  
+
+## Contact Me
+If you have some questions about this project, please contact me.
+[hanwang.0501@gmail.com](hanwang.0501@gmail.com)    

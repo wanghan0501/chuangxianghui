@@ -9,8 +9,8 @@ Copyright © 2017 Wang Han. SCU. All Rights Reserved.
 import qrcode
 from PIL import Image
 
-# ip_address = "http://112.74.50.182/comment"
-ip_address = "http://120.77.150.167/comment"
+
+ip_address = "http://your_ip_address/comment"
 
 qr = qrcode.QRCode(version=2,
                    error_correction=qrcode.constants.ERROR_CORRECT_H,
