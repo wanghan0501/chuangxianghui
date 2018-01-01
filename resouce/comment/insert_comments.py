@@ -7,7 +7,7 @@ E-mail address is hanwang.0501@gmail.com.
 Copyright © 2017 Wang Han. SCU. All right Reserved.
 """
 
-from app.comment_helper import add_comment
+from app.dbhelper.comment_helper import add_comment
 
 
 """

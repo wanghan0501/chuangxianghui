@@ -1,6 +1,15 @@
 # shuzhifenxiang(孰知分享)
 
-Scan QR code and get a random comment.
+## Introduction
+- Scan QR code and get a random comment. 
+- Manage comments and statistic visit times.
+
+## Effect
+- From PC
+![PC](http://p0zok30am.bkt.clouddn.com/18-1-1/80742177.jpg)
+
+- From Phone
+![phone](http://p0zok30am.bkt.clouddn.com/18-1-1/49591576.jpg)
 
 ## Environment 
   - Language：Python3
@@ -16,12 +25,19 @@ python3 manage.py
 ```
 ### Change Port
 
-Default port is `5000`
+Default port: `5000`
 
 If you want to change the default port, please set the port which you want to the following statement.
 ```python
 app.run(debug=False, port=5000, host='0.0.0.0', threaded=True)
 ```
+
+### Manage comments
+
+If you want to manage comments, please visit `http://localhost:5000`
+
+- Default account:  `shuzhifenxiang`  
+- Default password: `123456`
 
 ## Development
 

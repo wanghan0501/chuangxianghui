@@ -6,17 +6,26 @@ Created by Wang Han on 27/12/2017 15:28.
 E-mail address is hanwang.0501@gmail.com.
 Copyright © 2017 Wang Han. SCU. All right Reserved.
 """
+
 import random
+from datetime import datetime
 
 from flask import jsonify, redirect, render_template, request, url_for
 
-from app import app, comment_helper
+from app import app
+from app.dbhelper import comment_helper, visit_helper
 from app.utils.get_time import get_str_chinese_time
 from config import manager
 
 
 @app.route('/comment', methods=["GET", "POST"])
 def comment():
+    visit_time = datetime.now().strftime('%Y-%m-%d')
+    if not visit_helper.check_visit_exist(visit_time):
+        visit_helper.add_visit(visit_time, 1)
+    else:
+        visit_helper.update_visit(visit_time)
+
     # get total comment number
     count = comment_helper.get_comment_count()
     # random comment offset
@@ -46,7 +55,8 @@ def manage(page=1):
     comments = comment_helper.get_all_comments()
     length = len(comments)
     p_list, start, end = comment_helper.get_page(length, pagesize=20, page=page)
-    count = {'visit': 0, 'com_len': length, 'page_list': p_list}
+    visit_count = visit_helper.get_all_count()
+    count = {'visit': visit_count, 'com_len': length, 'page_list': p_list}
     return render_template('manage.html', comments=comments[start:end], count=count)
 
 
